@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<div id="cate_shop">
+    {% for category  in categories %}
+        <p>{{ category.name }}</p>
+        <ul class="clear">
+            {% for shop in category.shops %}
+                <li>
+                    <a href="#">
+                        <img src="static/img/middle/{{ shop.img.shop_img_id }}.jpg">
+                        <p>[热销] {{ shop.name }}</p>
+                        <p> {{ shop.promote_price }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</div>

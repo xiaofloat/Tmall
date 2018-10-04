@@ -1,0 +1,25 @@
+<style>
+    ul li{
+        width: 33%;
+        float: left;
+    }
+</style>
+<ul>
+    {% for shop in  shops %}
+        <li>
+            <a href="#">
+                <img src="/static/img/middle/{{ shop.image.shop_img_id }}.jpg">
+                <p>{{ shop.name }}</p>
+                <p>{{ shop.promote_price }}</p>
+                <div><span>月成交量 70 </span> <span>评论 1</span></div>
+            </a>
+        </li>
+    {% empty %}
+        <p>没有相关的商品信息</p>
+    {% endfor %}
+
+</ul>
+
+
+
+

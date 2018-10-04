@@ -1,0 +1,32 @@
+{% load staticfiles %}
+{#相对定位  元素会占据正常文档流的位置   参照 自身左上#}
+{#绝对定位    不会占据原来文档流的位置   参照   相对于最近父类已经定位的元素 #}
+<div class="category_banner">
+    <div class="category">
+        <ul id="cate">
+            {% for category in  categories %}
+                <li><a href="">{{ category.name }}</a>
+                    <ul class="sub">
+                        {% for sub in  category.subs %}
+                            <li><a href="#"> {{ sub.name }}</a>
+                                <div class="sub2">
+                                    {% for sub2 in sub.subs2 %}
+                                        <a href="">{{ sub2.name }}</a>
+                                    {% endfor %}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="banner" id="b03">
+        <ul>
+            {% for banner in banners %}
+                <li><a href="{{ banner.detail_url }}"><img src="static/{{ banner.image }}"></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

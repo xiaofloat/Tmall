@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load cache %}
+{% block page_css %}
+
+{% endblock %}
+
+{% block page_jq %}
+    <script type="text/javascript" src="/static/js/unslider.min.js"></script>
+    <script type="text/javascript" src="/static/js/home.js"></script>
+{% endblock %}
+
+{% block title %}
+    首页
+{% endblock %}
+{% block page_head %}
+    {% cache 5 * 60 'index_head' %}
+        {# 顶部#}
+        {% include 'include/common/page_top.html' %}
+        {#搜索#}
+        {% include 'include/common/page_search.html' %}
+        {% include 'include/index/page_navigation.html' %}
+        {#分类#}
+        {% include 'include/index/page_category.html' %}
+        {# 轮播#}
+        {% include 'include/index/page_banner.html' %}
+    {% endcache %}
+{% endblock %}
+{% block page_content %}
+    {# 分类商品信息#}
+    {% include 'include/index/page_category_shops.html' %}
+{% endblock %}
+{% block page_footer %}
+
+{% endblock %}
+
+
+

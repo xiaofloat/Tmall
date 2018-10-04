@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load cars_filter %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table tr{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<form action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+    <p>地址:<input type="text" name="address"></p>
+    <p>收货人:<input type="text" name="receiver"></p>
+    <p>邮编:<input type="text" name="post"></p>
+    <p>手机号:<input type="text" name="mobile"></p>
+    <p>附加信息:<input type="text" name="user_message"></p>
+    <p>付款方式 <input type="radio" name="rd" value="1">微信支付 <input type="radio" name="rd" value="2" checked="checked">支付宝支付</p>
+
+    <table border="1" cellspacing="0" cellpadding="0">
+        <tr>
+            <th>图片</th>
+            <th>标题</th>
+            <th>价格</th>
+            <th>数量</th>
+            <th>总价</th>
+        </tr>
+        {% for car in cars %}
+            <tr>
+                <td><img src="http://127.0.0.1:8000/static/img/small/{{ car.img.shop_img_id }}.jpg"></td>
+                <td><a href="#">{{ car.shop.name }}</a></td>
+                <td><a>{{ car.shop.promote_price }}</a></td>
+                <th><p type="number" value="" name="number">{{ car.number }}</p></th>
+                <td>{{ car.number|times:car.shop.promote_price }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div>
+        <input type="submit" value="提交订单">
+    </div>
+</form>
+
+</body>
+</html>

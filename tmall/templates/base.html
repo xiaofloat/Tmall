@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <link href="{% static 'css/bootstrap/3.3.6/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/common.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/fore/style.css' %}" rel="stylesheet" type="text/css">
+    <title>{% block title %}{% endblock %}</title>
+    {% block  page_css %}
+    {% endblock %}
+    {% block page_jq %}
+    {% endblock %}
+</head>
+<body>
+<div id="head">
+    {% block page_head %}
+    {% endblock %}
+</div>
+
+<div id="content">
+    {% block page_content %}
+    {% endblock %}
+</div>
+
+<div id="footer">
+    {% block page_footer %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
